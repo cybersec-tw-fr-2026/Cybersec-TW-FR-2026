@@ -16,13 +16,15 @@ if (navToggle && navMenu) {
 }
 
 // 左右滑動
-const carousel = document.querySelector(".venue-carousel");
-
-if (carousel) {
+document.querySelectorAll(".venue-carousel").forEach((carousel) => {
   const slides = carousel.querySelectorAll(".carousel-slide");
   const dots = carousel.querySelectorAll(".carousel-dot");
   const prevBtn = carousel.querySelector(".carousel-prev");
   const nextBtn = carousel.querySelector(".carousel-next");
+  const captionList = carousel.parentElement.querySelector(".caption-list");
+  const captions = captionList ? captionList.querySelectorAll(".route-item") : [];
+
+  if (!slides.length) return;
 
   let currentIndex = 0;
 
@@ -36,20 +38,51 @@ if (carousel) {
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === currentIndex);
     });
+
+    captions.forEach((caption, i) => {
+      caption.classList.toggle("active", i === currentIndex);
+    });
   };
 
-  prevBtn.addEventListener("click", () => {
-    showSlide(currentIndex - 1);
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      showSlide(currentIndex - 1);
+    });
+  }
 
-  nextBtn.addEventListener("click", () => {
-    showSlide(currentIndex + 1);
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      showSlide(currentIndex + 1);
+    });
+  }
 
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
       showSlide(i);
     });
   });
-}
+});
 // 左右滑動
+
+// 交通方式選項切換
+document.querySelectorAll(".route-tabs").forEach((tabs) => {
+  const buttons = tabs.querySelectorAll(".route-tab");
+  const switcher = tabs.nextElementSibling;
+
+  if (!switcher || !switcher.classList.contains("route-switcher")) return;
+
+  const photos = switcher.querySelectorAll(".route-photo");
+  const items = switcher.querySelectorAll(".route-item");
+
+  const showRoute = (route) => {
+    buttons.forEach((btn) => btn.classList.toggle("active", btn.dataset.route === route));
+    photos.forEach((photo) => photo.classList.toggle("active", photo.dataset.route === route));
+    items.forEach((item) => item.classList.toggle("active", item.dataset.route === route));
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      showRoute(btn.dataset.route);
+    });
+  });
+});
