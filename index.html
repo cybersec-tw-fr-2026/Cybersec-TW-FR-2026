@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Website Moved</title>
+
+  <!-- Automatically redirect after 3 seconds -->
+  <meta http-equiv="refresh"
+        content="3; url=https://cybersecai2026.github.io/">
+
+  <!-- New official website -->
+  <link rel="canonical"
+        href="https://cybersecai2026.github.io/">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f7f7f7;
+      color: #222;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 650px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #0969da;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Website Moved</h1>
+
+    <p>
+      The website for the
+      <strong>2026 Taiwan–France Joint Research Workshop on Cybersecurity & AI</strong>
+      has moved to a new address.
+    </p>
+
+    <p>
+      Please visit our new website:<br>
+      <a href="https://cybersecai2026.github.io/">
+        https://cybersecai2026.github.io/
+      </a>
+    </p>
+
+    <p>
+      You will be redirected automatically in 3 seconds.
+    </p>
+  </div>
+
+  <script>
+    // Preserve anchors such as #program, #venue, etc.
+    setTimeout(function () {
+      window.location.replace(
+        "https://cybersecai2026.github.io/" + window.location.hash
+      );
+    }, 3000);
+  </script>
+
+</body>
+</html>
